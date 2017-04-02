@@ -59,7 +59,7 @@ class Knowledge(object):
 
     def get_news(self):
         ret_headlines = []
-        feed = feedparser.parse("https://news.google.com/news?ned=%s&output=rss" % self.news_country_code)
+        feed = feedparser.parse("http://www.lavanguardia.com/mvc/feed/rss/home")
 
         for post in feed.entries[0:5]:
             ret_headlines.append(post.title)
