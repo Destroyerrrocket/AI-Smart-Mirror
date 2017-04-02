@@ -18,9 +18,9 @@ class Speech(object):
         speech = None
         try:
             speech = recognizer.recognize_google(audio)
-            print("Google Speech Recognition thinks you said " + speech)
+            print("Google Speech Recognition piensa que has dicho " + speech)
         except sr.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
+            print("Google Speech Recognition no he podido entender el audio")
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
@@ -33,11 +33,11 @@ class Speech(object):
         with m as source:
             r.adjust_for_ambient_noise(source)
             self.__debugger_microphone(enable=True)
-            print "I'm listening"
+            print "estoy escuchando"
             audio = r.listen(source)
 
         self.__debugger_microphone(enable=False)
-        print "Found audio"
+        print "Audio encontrado"
         return r, audio
 
     def is_call_to_action(self, recognizer, audio):
