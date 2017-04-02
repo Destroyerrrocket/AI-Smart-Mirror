@@ -68,7 +68,7 @@ class Knowledge(object):
 
     def get_holidays(self):
         today = datetime.datetime.now()
-        r = requests.get("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForYear&year=%s&country=usa" % today.year)
+        r = requests.get("https://destroyerrrocket.github.io/AI-Smart-Mirror/sabadellfestivitats.json")
         holidays = json.loads(r.text)
 
         return holidays
