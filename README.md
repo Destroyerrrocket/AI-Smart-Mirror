@@ -1,6 +1,9 @@
 # AI-Smart-Mirror
 Smart Mirror with a smart AI 🤖
 
+this is a fork that will become a translation to Spanish
+please see the original one: https://github.com/HackerHouseYT/AI-Smart-Mirror
+
 Watch the video on how to make it here:
 https://youtu.be/ejnE6DM-hqU
 
