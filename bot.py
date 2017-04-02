@@ -14,11 +14,11 @@ from speech import Speech
 from knowledge import Knowledge
 from vision import Vision
 
-my_name = "Aaron"
-launch_phrase = "ok mirror"
+my_name = "Pol"
+launch_phrase = "ok espejo"
 use_launch_phrase = True
-weather_api_token = "<weather_token>"
-wit_ai_token = "<wit.ai_token>"
+weather_api_token = "86ac0cf3006b2a3c9ac8234270d81c05"
+wit_ai_token = "OAEDKP5G7KCTUSJ5IXAHT5N4EHV7OVFH"
 debugger_enabled = True
 camera = 0
 
@@ -99,14 +99,14 @@ class Bot(object):
                     self.__appreciation_action()
                     return
                 else: # No recognized intent
-                    self.__text_action("I'm sorry, I don't know about that yet.")
+                    self.__text_action("Lo siento, aún no sé de este tema.")
                     return
 
             except Exception as e:
                 print "Failed wit!"
                 print(e)
                 traceback.print_exc()
-                self.__text_action("I'm sorry, I couldn't understand what you meant by that")
+                self.__text_action("Lo siento, no te he entendido.")
                 return
 
             self.decide_action()
@@ -117,7 +117,7 @@ class Bot(object):
         if joke is not None:
             self.__text_action(joke)
         else:
-            self.__text_action("I couldn't find any jokes")
+            self.__text_action("Lo siento, no encontrado ninguna broma.")
 
     def __user_status_action(self, nlu_entities=None):
         attribute = None
@@ -129,7 +129,7 @@ class Bot(object):
 
     def __user_name_action(self):
         if self.nlg.user_name is None:
-            self.__text_action("I don't know your name. You can configure it in bot.py")
+            self.__text_action("No sé tu nombre. puedes configurarlo en bot.py")
 
         self.__text_action(self.nlg.user_name)
 
@@ -163,7 +163,7 @@ class Bot(object):
             if interest is not None:
                 self.speech.synthesize_text(interest)
         else:
-            self.__text_action("I had some trouble finding news for you")
+            self.__text_action("He tenido problemas encontrando noticias.")
 
     def __weather_action(self, nlu_entities=None):
 
@@ -226,12 +226,12 @@ class Bot(object):
 
         if location is not None:
             maps_url = self.knowledge.get_map_url(location, map_type)
-            maps_action = "Sure. Here's a map of %s." % location
+            maps_action = "por supuesto. aquí tienes un mapa de %s." % location
             body = {'url': maps_url}
             requests.post("http://localhost:8080/image", data=json.dumps(body))
             self.speech.synthesize_text(maps_action)
         else:
-            self.__text_action("I'm sorry, I couldn't understand what location you wanted.")
+            self.__text_action("Lo siento no encontré la localización que querías.")
 
     def __holidays_action(self):
         holidays = self.knowledge.get_holidays()
