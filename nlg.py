@@ -64,7 +64,7 @@ class NLG(object):
             ret_phrase = random.choice(simple_acknoledgement)
         elif choice == 1:
             date = datetime.datetime.now()
-            ret_phrase = "Good %s. What can I do for you?" % self.time_of_day(date)
+            ret_phrase = "Buena %s. Qué puedo hacer por ti?" % self.time_of_day(date)
         else:
             ret_phrase = random.choice(personal_acknowledgement)
 
@@ -72,7 +72,7 @@ class NLG(object):
 
     def searching(self):
         searching_phrases = [
-            "I'll see what I can find"
+            "a ver qué puedo encontrar"
         ]
 
         return random.choice(searching_phrases)
@@ -80,9 +80,9 @@ class NLG(object):
     def snow_white(self):
 
         phrases = [
-            "You are",
-            "You",
-            "You are, of course"
+            "tú lo eres",
+            "tú",
+            "tú lo eres, por supuesto"
         ]
 
         return random.choice(phrases)
@@ -92,20 +92,20 @@ class NLG(object):
         ret_phrase = ""
 
         positive_complements = [
-            "good",
-            "nice",
-            "great",
-            "perfect",
-            "Beautiful"
+            "bien",
+            "ok",
+            "increíble",
+            "perfecto",
+            "Hermoso"
         ]
 
         negative_complements = [
-            "bad",
-            "terrible"
+            "mal",
+            "horrible"
         ]
 
         moderate_complements = [
-            "alright",
+            "correcto",
             "okay"
         ]
 
@@ -116,31 +116,31 @@ class NLG(object):
             complement_choice = moderate_complements
 
         if attribute is None:
-            ret_phrase = "You look %s" % random.choice(complement_choice)
+            ret_phrase = "Te ves %s" % random.choice(complement_choice)
         else:
-            ret_phrase = self.generate('none', {'subject': "Your %s" % attribute, 'verb': 'look %s' % random.choice(complement_choice)}, "present")
+            ret_phrase = self.generate('none', {'subject': "Tu %s" % attribute, 'verb': 'se ve %s' % random.choice(complement_choice)}, "present")
 
         return ret_phrase
 
     def personal_status(self, status_type=None):
         positive_status=[
-            "I'm doing well",
-            "Great, thanks for asking",
-            "I'm doing great"
+            "Me va bien",
+            "Genial, gracias por preguntar",
+            "lo llevo muy bien"
         ]
 
         negative_status = [
-            "I'm not doing well",
-            "I'm feeling terrible",
-            "I'm not doing well today",
-            "I could be much better"
+            "No lo llevo bien",
+            "Me siento horrible",
+            "Hoy no me va bien",
+            "Podría estar mucho mejor"
         ]
 
         moderate_status = [
-            "I'm doing alright",
-            "I'm okay",
-            "I could be better",
-            "I'm alright"
+            "Lo llevo bien",
+            "Estoy bien",
+            "podría estar mejor",
+            "estoy bien"
         ]
 
         if status_type == 'negative':
@@ -177,28 +177,28 @@ class NLG(object):
     def news(self, tense):
 
         headlines_nouns = [
-            "stories",
-            "articles",
-            "headlines",
+            "noticias",
+            "artículos",
+            "titulares",
         ]
 
         headlines_adjectives = [
-            ["these"],
-            ["some"],
-            ["a", "few"],
-            ["a", "couple"]
+            ["algunas"],
+            ["unas"],
+            ["un", "par"],
+            ["unas", "cuantas"]
         ]
 
         headlines_prepmodifiers = [
-            "you"
+            "ti"
         ]
 
         choice = random.randint(0, 1)
 
         if choice == 1:
-            ret_phrase = self.generate('none', {'subject': "I", 'object': random.choice(headlines_nouns), 'verb': 'find', 'objmodifiers': random.choice(headlines_adjectives), 'preposition': 'for', 'prepmodifiers': [random.choice(headlines_prepmodifiers)]}, tense)
+            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'he buscado', 'objmodifiers': random.choice(headlines_adjectives), 'preposition': 'para', 'prepmodifiers': [random.choice(headlines_prepmodifiers)]}, tense)
         else:
-            ret_phrase = self.generate('none', {'subject': "I", 'object': random.choice(headlines_nouns), 'verb': 'find', 'objmodifiers': random.choice(headlines_adjectives)}, tense)
+            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'he buscado', 'objmodifiers': random.choice(headlines_adjectives)}, tense)
 
         return ret_phrase
 
@@ -209,12 +209,17 @@ class NLG(object):
             if article_titles is not None:
                 article = random.choice(article_titles)
                 article = article.rsplit('-', 1)[0]
-                ret_phrase = "%s sounds particularly interesting" % article
+                ret_phrase = "%s. suena interesante" % article
 
         return ret_phrase
 
     def insult(self):
-        return "That's not very nice. Talk to me again when you have fixed your attitude"
+        insultanswer = [
+            "That's not very nice. Talk to me again when you have fixed your attitude",
+            "Artificial intelligence is no match for natural stupidity."
+        ]
+
+        return random.choice(insultanswer)
 
     def greet(self):
         """
@@ -223,23 +228,22 @@ class NLG(object):
         """
 
         greeting_words = [
-            "Hi",
-            "Hey",
-            "Hello"
+            "Hola",
+            "Hey"
         ]
 
         goofy_greetings = [
-            "what's up?",
-            "howdy",
-            "what's crackin'?",
-            "top of the morning to ya"
+            "qué pasa?",
+            "cómo va?",
+            "todo bien?",
+            "cómo va todo?"
         ]
 
         choice = random.randint(0,4)
         ret_phrase = ""
 
         if (choice == 0) or (choice == 3): # time related
-            ret_phrase = "Good %s" % self.time_of_day(datetime.datetime.now())
+            ret_phrase = "Buena %s" % self.time_of_day(datetime.datetime.now())
             if self.user_name is not None:
                 if random.randint(0, 1) == 0:
                     ret_phrase = "%s %s" % (ret_phrase, self.user_name)
@@ -262,7 +266,7 @@ class NLG(object):
         :return:
         """
 
-        ret_phrase = self.generate('none', {'subject':"the temperature", 'object': "%d degrees" % temperature, 'verb': 'is', 'adverbs': ["%s" % self.time_of_day(date, with_adjective=True)]}, tense)
+        ret_phrase = self.generate('none', {'subject':"la temperatura", 'object': "%d grados" % temperature, 'verb': 'está', 'adverbs': ["esta %s" % self.time_of_day(date, with_adjective=True)]}, tense)
         return ret_phrase
 
     def forecast(self, forecast_obj):
@@ -276,17 +280,17 @@ class NLG(object):
             forecast = forecast_obj.get("forecast")
 
         forecast_current = [
-            "Currently, it's",
-            "Right now, it's",
-            "At the moment, it's",
-            "It's",
-            "It is"
+            "Actualmente, está",
+            "Ahora mismo, está",
+            "En este instante, está",
+            "Está",
+            "Está"
         ]
 
         forecast_hourly = [
-            "It's",
-            "It will be",
-            "Looks like it will be"
+            "Estará",
+            "Estará",
+            "Parece que estará"
         ]
 
         forecast_daily = [
@@ -304,23 +308,22 @@ class NLG(object):
 
     def appreciation(self):
         phrases = [
-            "No problem!",
-            "Any time",
-            "You are welcome",
-            "You're welcome",
-            "Sure, no problem",
-            "Of course",
-            "Don't mention it",
-            "Don't worry about it"
+            "No hay problema!",
+            "Aquí estaré",
+            "Eres bienvenido",
+            "Siempre eres bienvenido",
+            "por supuesto, no hay problema",
+            "por supuesto"
         ]
 
         return random.choice(phrases)
 
     def holiday(self, holiday_name):
         phrases = [
-            "",
-            "Looks like the next holiday is ",
-            "The next important day is "
+            "Parece que la próxima fiesta es ",
+            "La próxima fiesta es ",
+            "La próxima fiesta es ",
+            "la próxima fiesta importante es ",
         ]
 
         return "%s%s" % (random.choice(phrases), holiday_name)
@@ -328,7 +331,9 @@ class NLG(object):
     def meaning_of_life(self):
         phrases = [
             "42",
-            "The meaning of life, the universe, and everything else is 42"
+            "El significado de la vida, del universo y del todo es 42",
+            "Por favor lea el manual del autoestopista galáctico",
+            "42, según mi manual"
         ]
 
         return random.choice(phrases)
@@ -339,15 +344,15 @@ class NLG(object):
     def time_of_day(self, date, with_adjective=False):
         ret_phrase = ""
         if date.hour < 10:
-            ret_phrase = "morning"
+            ret_phrase = "mañana"
             if with_adjective:
                 ret_phrase = "%s %s" % ("this", ret_phrase)
         elif (date.hour >= 10) and (date.hour < 18):
-            ret_phrase = "afternoon"
+            ret_phrase = "tarde"
             if with_adjective:
                 ret_phrase = "%s %s" % ("this", ret_phrase)
         elif date.hour >= 18:
-            ret_phrase = "evening"
+            ret_phrase = "noche"
             if with_adjective:
                 ret_phrase = "%s %s" % ("this", ret_phrase)
 
