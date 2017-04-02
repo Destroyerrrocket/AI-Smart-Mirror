@@ -24,7 +24,7 @@ Form = gateway.jvm.Form
 class NLG(object):
     """
     Used to generate natural language. Most of these sections are hard coded. However, some use simpleNLG which is
-    used to string together verbs and nouns.
+    used to string together verbs and nouns. [Traducido]
     """
     def __init__(self, user_name=None):
         self.user_name = user_name
@@ -39,17 +39,17 @@ class NLG(object):
             user_name = ""
 
         simple_acknoledgement = [
-            "Yes?",
-            "What can I do for you?",
-            "How can I help?"
+            "Si?",
+            "qué puedo hacer por ti?",
+            "en qué puedo ayudarte?"
         ]
 
         personal_acknowledgement = [
-            "How can I help you today, %s" % user_name,
-            "How can I help you, %s" % user_name,
-            "What can I do for you, %s" % user_name,
-            "Hi %s, what can I do for you?" % user_name,
-            "Hey %s, what can I do for you?" % user_name
+            "Cómo puedo ayudarle hoy, %s" % user_name,
+            "Cómo puedo ayudarle, %s" % user_name,
+            "Qué puedo hacer por ti, %s" % user_name,
+            "Hola %s, Qué puedo hacer por ti?" % user_name,
+            "Hey %s, Qué puedo hacer por ti?" % user_name
         ]
 
         choice = 0
