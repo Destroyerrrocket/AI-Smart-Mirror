@@ -49,7 +49,7 @@ class Speech(object):
         return False
 
     def synthesize_text(self, text):
-        tts = gTTS(text=text, lang='en')
+        tts = gTTS(text=text, lang='es')
         tts.save("tmp.mp3")
         song = AudioSegment.from_mp3("tmp.mp3")
         play(song)
