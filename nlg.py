@@ -1,4 +1,5 @@
 # nlg.py
+# -*- coding: utf-8 -*-  
 import random
 import datetime
 from py4j_server import launch_py4j_server
@@ -24,7 +25,7 @@ Form = gateway.jvm.Form
 class NLG(object):
     """
     Used to generate natural language. Most of these sections are hard coded. However, some use simpleNLG which is
-    used to string together verbs and nouns. [Traducido]
+    used to string together verbs and nouns. [Traducido por Pol (Destroyerrocket)]
     """
     def __init__(self, user_name=None):
         self.user_name = user_name
@@ -266,7 +267,7 @@ class NLG(object):
         :return:
         """
 
-        ret_phrase = self.generate('none', {'subject':"la temperatura", 'object': "%d grados" % temperature, 'verb': 'está', 'adverbs': ["esta %s" % self.time_of_day(date, with_adjective=True)]}, tense)
+        ret_phrase = self.generate('none', {'subject':"la temperatura", 'object': "%d grados" % temperature, 'verb': 'está', 'adverbs': ["%s" % self.time_of_day(date, with_adjective=True)]}, tense)
         return ret_phrase
 
     def forecast(self, forecast_obj):
@@ -346,15 +347,15 @@ class NLG(object):
         if date.hour < 10:
             ret_phrase = "mañana"
             if with_adjective:
-                ret_phrase = "%s %s" % ("this", ret_phrase)
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
         elif (date.hour >= 10) and (date.hour < 18):
             ret_phrase = "tarde"
             if with_adjective:
-                ret_phrase = "%s %s" % ("this", ret_phrase)
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
         elif date.hour >= 18:
             ret_phrase = "noche"
             if with_adjective:
-                ret_phrase = "%s %s" % ("this", ret_phrase)
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
 
         return ret_phrase
 
