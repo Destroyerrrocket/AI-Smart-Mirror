@@ -2,7 +2,7 @@ import requests
 import json
 import feedparser
 import datetime
-
+import sys
 
 class Knowledge(object):
     def __init__(self, weather_api_token, news_country_code='us'):
@@ -14,19 +14,20 @@ class Knowledge(object):
 
         lat = loc_obj['lat']
         lon = loc_obj['lon']
+	weather_req_url = "https://api.darksky.net/forecast/86ac0cf3006b2a3c9ac8234270d81c05/41.546304, 2.108432?lang=es&units=ca"
 
-        weather_req_url = "https://api.darksky.net/forecast/%s/%s,%s" % (self.weather_api_token, lat, lon)
+        #weather_req_url = "https://api.darksky.net/forecast/%s/%s,%s" % (self.weather_api_token, lat, lon)
         r = requests.get(weather_req_url)
         weather_json = json.loads(r.text)
 
         temperature = int(weather_json['currently']['temperature'])
-
+	#temperature = (temperatureF - 32) * 5.0/9.0
         current_forecast = weather_json['currently']['summary']
         hourly_forecast = weather_json['minutely']['summary']
         daily_forecast = weather_json['hourly']['summary']
         weekly_forecast = weather_json['daily']['summary']
         icon = weather_json['currently']['icon']
-        wind_speed = int(weather_json['currently']['windSpeed'])
+        wind_speed = (weather_json['currently']['windSpeed'])
 
         return {'temperature': temperature, 'icon': icon, 'windSpeed': wind_speed, 'current_forecast': current_forecast, 'hourly_forecast': hourly_forecast, 'daily_forecast': daily_forecast, 'weekly_forecast': weekly_forecast}
 
@@ -72,4 +73,3 @@ class Knowledge(object):
         holidays = json.loads(r.text)
 
         return holidays
-
