@@ -1,7 +1,9 @@
 # bot.py
-
+# -*- coding: utf-8 -*-  
 # speechrecognition, pyaudio, brew install portaudio
 import sys
+reload(sys)  
+sys.setdefaultencoding('utf8')
 sys.path.append("./")
 
 import requests
@@ -15,10 +17,10 @@ from knowledge import Knowledge
 from vision import Vision
 
 my_name = "Pol"
-launch_phrase = "ok espejo"
+launch_phrase = "ok elena"
 use_launch_phrase = True
 weather_api_token = "86ac0cf3006b2a3c9ac8234270d81c05"
-wit_ai_token = "OAEDKP5G7KCTUSJ5IXAHT5N4EHV7OVFH"
+wit_ai_token = "Bearer OAEDKP5G7KCTUSJ5IXAHT5N4EHV7OVFH"
 debugger_enabled = True
 camera = 0
 
@@ -98,12 +100,12 @@ class Bot(object):
                 elif intent == 'appreciation':
                     self.__appreciation_action()
                     return
-                else: # No recognized intent
+                else: 
                     self.__text_action("Lo siento, aún no sé de este tema.")
                     return
 
             except Exception as e:
-                print "Failed wit!"
+                print "wit ha fallado, Pol, QUÉ HACES?!"
                 print(e)
                 traceback.print_exc()
                 self.__text_action("Lo siento, no te he entendido.")
@@ -117,7 +119,7 @@ class Bot(object):
         if joke is not None:
             self.__text_action(joke)
         else:
-            self.__text_action("Lo siento, no encontrado ninguna broma.")
+            self.__text_action("Lo siento, no he encontrado ninguna broma.")
 
     def __user_status_action(self, nlu_entities=None):
         attribute = None
@@ -231,7 +233,7 @@ class Bot(object):
             requests.post("http://localhost:8080/image", data=json.dumps(body))
             self.speech.synthesize_text(maps_action)
         else:
-            self.__text_action("Lo siento no encontré la localización que querías.")
+            self.__text_action("Lo siento, no encontré la localización que querías.")
 
     def __holidays_action(self):
         holidays = self.knowledge.get_holidays()
