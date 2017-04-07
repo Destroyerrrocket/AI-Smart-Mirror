@@ -13,8 +13,7 @@ https://youtu.be/ejnE6DM-hqU
 Download the stable version of Node.js: 
 https://nodejs.org/en/
 
-Download Java (If you hadn't done that before)```shell 
-sudo apt-get install default-jre ```
+Download Java (If you hadn't done that before)```sudo apt-get install default-jre ```
 
 Clone the latest MagicMirror code from:
 https://github.com/MichMich/MagicMirror
