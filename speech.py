@@ -1,4 +1,5 @@
 # speech.py
+# -*- coding: utf-8 -*-  
 # speechrecognition, pyaudio, brew install portaudio
 import speech_recognition as sr
 import os
@@ -17,7 +18,7 @@ class Speech(object):
     def google_speech_recognition(self, recognizer, audio):
         speech = None
         try:
-            speech = recognizer.recognize_google(audio)
+            speech = recognizer.recognize_google(audio, language="es")
             print("Google Speech Recognition piensa que has dicho " + speech)
         except sr.UnknownValueError:
             print("Google Speech Recognition no he podido entender el audio")
