@@ -4,9 +4,12 @@ Utilities for starting Py4J servers.
 import atexit
 import os
 import glob
+import sys
 from subprocess import Popen, PIPE
 from py4j.java_gateway import JavaGateway, GatewayClient, java_import
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 MODULE_DIR = os.path.dirname(__file__)
 LIB_DIR = os.path.join(MODULE_DIR, 'lib')
@@ -28,7 +31,7 @@ def launch_py4j_server():
     """
     # Launch the server on an ephemeral in a subprocess.
     _pid = Popen(["java", "-classpath", CLASSPATH, "Py4JServer", "0"],
-        stdout=PIPE, stdin=PIPE)
+stdout=PIPE, stdin=PIPE)
 
     # Determine which ephemeral port the server started on.
     _port = int(_pid.stdout.readline())
