@@ -10,14 +10,15 @@ https://youtu.be/ejnE6DM-hqU
 # Setup Guide
 
 ## Magic Mirror
-Download the stable version of Node.js: 
+Download the stable version of Node.js:
 https://nodejs.org/en/
 
 Download Java (If you hadn't done that before)```sudo apt-get install default-jre ```
 
 Clone the latest MagicMirror code from:
-https://github.com/MichMich/MagicMirror
-
+```shell
+git clone https://github.com/MichMich/MagicMirror.git
+```
 Navigate inside the MagicMirror folder
 ```shell
 cd MagicMirror
@@ -27,32 +28,32 @@ Install MagicMirror dependencies
 ```shell
 sudo npm install
 ```
- 
+
 Verify it starts
 ```shell
 npm start
 ```
- 
+
 Navigate out of the MagicMirror folder
 ```shell
 cd ..
 ```
- 
+
 Clone this repository (AI Smart Mirror)
 ```shell
-git clone git@github.com:HackerHouseYT/AI-Smart-Mirror.git
+git clone https://github.com/Destroyerrrocket/AI-Smart-Mirror.git
 ```
 
 Copy the folders in `AI-Smart-Mirror/magic_mirror` to `MagicMirror/modules`
 
 Copy the `config.js` file in `AI-Smart-Mirror/magic_mirror` to `MagicMirror/config`
- 
+
 ## AI
- 
+
 Make sure Ruby is installed: https://www.ruby-lang.org/en/documentation/installation/
- 
+
 Install Homebrew: http://brew.sh/
- 
+
 Navigate to the AI-Smart-Mirror folder
 ```shell
 cd AI-Smart-Mirror
@@ -83,7 +84,7 @@ python bot.py
 ## Setup Facial Recognition
 Refer to this guide: https://www.learnopencv.com/install-opencv-3-on-yosemite-osx-10-10-x/
 
-Install openCV with 
+Install openCV with
 ```shell
 brew tap homebrew/science
 brew install opencv
@@ -132,4 +133,3 @@ Start the app
 ```shell
 python bot.py
 ```
- 
