@@ -25,7 +25,7 @@ Form = gateway.jvm.Form
 class NLG(object):
     """
     Used to generate natural language. Most of these sections are hard coded. However, some use simpleNLG which is
-    used to string together verbs and nouns. [Traducido por Pol (Destroyerrocket)]
+    used to string together verbs and nouns. [Traducido y manipulado por Pol (Destroyerrocket)]
     """
     def __init__(self, user_name=None):
         self.user_name = user_name
@@ -65,7 +65,7 @@ class NLG(object):
             ret_phrase = random.choice(simple_acknoledgement)
         elif choice == 1:
             date = datetime.datetime.now()
-            ret_phrase = "Buena %s. Qué puedo hacer por ti?" % self.time_of_day(date)
+            ret_phrase = "%s. Qué puedo hacer por ti?" % self.time_of_day_hi(date)
         else:
             ret_phrase = random.choice(personal_acknowledgement)
 
@@ -119,7 +119,7 @@ class NLG(object):
         if attribute is None:
             ret_phrase = "Te ves %s" % random.choice(complement_choice)
         else:
-            ret_phrase = self.generate('none', {'subject': "Tu %s" % attribute, 'verb': 'se ve %s' % random.choice(complement_choice)}, "present")
+            ret_phrase = "Tu %s luce %s" % (attribute, random.choice(complement_choice))
 
         return ret_phrase
 
@@ -153,24 +153,25 @@ class NLG(object):
 
     def joke(self):
         jokes = [
-            "Artificial intelligence is no match for natural stupidity.",
-            "This morning I made a mistake and poured milk over my breakfast instead of oil, and it rusted before I could eat it.",
-            "An Englishman, an Irishman and a Scotsman walk into a bar. The bartender turns to them, takes one look, and says, \"What is this - some kind of joke?\"",
+            "La enfermera le dice al médico: Hay un hombre invisible en la sala de espera. Y el doctor responde: Dígale que en este momento no puedo verlo.",
+            "¿Cómo se dice autobús en alemán? Suban-estrujen-bajen.",
+            "Oiga como es que usted no habla nunca? Es que soy mudo.",
             "What's an onomatopoeia? Just what it sounds like!",
-            "Why did the elephant cross the road? Because the chicken retired.",
-            "Today a man knocked on my door and asked for a small donation towards the local swimming pool. I gave him a glass of water.",
-            "A recent study has found that women who carry a little extra weight live longer than the men who mention it.",
-            "I can totally keep secrets. It's the people I tell them to that can't.",
-            "My therapist says I have a preoccupation with vengeance. We'll see about that.",
-            "Money talks ...but all mine ever says is good-bye.",
-            "I started out with nothing, and I still have most of it.",
-            "I used to think I was indecisive, but now I'm not too sure.",
-            "I named my hard drive dat ass so once a month my computer asks if I want to 'back dat ass up'.",
-            "A clean house is the sign of a broken computer.",
-            "My favorite mythical creature? The honest politician.",
-            "Regular naps prevent old age, especially if you take them while driving.",
-            "For maximum attention, nothing beats a good mistake.",
-            "Take my advice. I'm not using it."
+            "Tú sabes cómo se llaman todos los habitantes de San Juan? todos no.",
+	    "Un hombre va a visitar a un adivino y llama a la puerta. quién es? pues vaya vino.",
+            "Hoy nombre ha llamado a mi puerta y ha pedido una donación para la piscina local. le he dado un vaso de agua.",
+            "Un estudio reciente demuestra que las mujeres que tienen un poco de sobrepeso viven más que los hombres que lo mencionan.",
+            "Cómo se llama esa montaña?. Cual?. Y la otra?.",
+            "A mi hijo le hemos puesto gafas. Qué nombre más feo.",
+            "llama y dice: oiga esto es la embajada de Laos?. Sí. Pues tráeme uno de vainilla.",
+            #"I started out with nothing, and I still have most of it.",
+            #"I used to think I was indecisive, but now I'm not too sure.",
+            #"I named my hard drive dat ass so once a month my computer asks if I want to 'back dat ass up'.",
+            #"A clean house is the sign of a broken computer.",
+            #"My favorite mythical creature? The honest politician.",
+            #"Regular naps prevent old age, especially if you take them while driving.",
+            #"For maximum attention, nothing beats a good mistake.",
+            #"Take my advice. I'm not using it."
         ]
 
         return random.choice(jokes)
@@ -178,16 +179,16 @@ class NLG(object):
     def news(self, tense):
 
         headlines_nouns = [
-            "noticias",
+            #"noticias",
             "artículos",
-            "titulares",
+            "titulares"
         ]
 
         headlines_adjectives = [
-            ["algunas"],
-            ["unas"],
-            ["un", "par"],
-            ["unas", "cuantas"]
+            ["algunos"],
+            ["unos"],
+            ["un", "par", "de"],
+            ["unos", "cuantos"]
         ]
 
         headlines_prepmodifiers = [
@@ -197,9 +198,9 @@ class NLG(object):
         choice = random.randint(0, 1)
 
         if choice == 1:
-            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'he buscado', 'objmodifiers': random.choice(headlines_adjectives), 'preposition': 'para', 'prepmodifiers': [random.choice(headlines_prepmodifiers)]}, tense)
+            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'busqué', 'objmodifiers': random.choice(headlines_adjectives), 'preposition': 'para', 'prepmodifiers': [random.choice(headlines_prepmodifiers)]}, tense)
         else:
-            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'he buscado', 'objmodifiers': random.choice(headlines_adjectives)}, tense)
+            ret_phrase = self.generate('none', {'subject': "", 'object': random.choice(headlines_nouns), 'verb': 'busqué', 'objmodifiers': random.choice(headlines_adjectives)}, tense)
 
         return ret_phrase
 
@@ -319,6 +320,13 @@ class NLG(object):
 
         return random.choice(phrases)
 
+    def creator(self):
+        phrases = [
+            "empecemos por quién soy yo. yo soy Elena, la IA programada por Pol Marcet y Juan Manuel. He sido programada basandome en los lenguajes de JavaScript, node punto JS, y Python. Aunque realmente hay mas lenguajes detras. El objetivo con que fui creada es para demostrar lo que ha avanzado la tecnología, y el funcionamiento de una inteligencia artificial como yo actualmente. Finalmente cabe remarcar las APIs de Google, dark sky, y La Vanguardia, que han jugado un papel muy importante durante el proceso de programación."
+        ]
+
+        return random.choice(phrases)
+
     def holiday(self, holiday_name):
         phrases = [
             "Parece que la próxima fiesta es ",
@@ -333,7 +341,7 @@ class NLG(object):
         phrases = [
             "42",
             "El significado de la vida, del universo y del todo es 42",
-            "Por favor lea el manual del autoestopista galáctico",
+            #"Por favor lea el manual del autoestopista galáctico",
             "42, según mi manual"
         ]
 
@@ -344,20 +352,39 @@ class NLG(object):
 
     def time_of_day(self, date, with_adjective=False):
         ret_phrase = ""
-        if date.hour < 10:
+        if date.hour < 12:
             ret_phrase = "mañana"
             if with_adjective:
                 ret_phrase = "%s %s" % ("esta", ret_phrase)
-        elif (date.hour >= 10) and (date.hour < 18):
+        elif (date.hour >= 12) and (date.hour < 20):
             ret_phrase = "tarde"
             if with_adjective:
                 ret_phrase = "%s %s" % ("esta", ret_phrase)
-        elif date.hour >= 18:
+        elif date.hour >= 20:
             ret_phrase = "noche"
             if with_adjective:
                 ret_phrase = "%s %s" % ("esta", ret_phrase)
 
         return ret_phrase
+
+
+    def time_of_day_hi(self, date, with_adjective=False):
+        ret_phrase = ""
+        if date.hour < 12:
+            ret_phrase = "buenos días"
+            if with_adjective:
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
+        elif (date.hour >= 12) and (date.hour < 20):
+            ret_phrase = "buenas tardes"
+            if with_adjective:
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
+        elif date.hour >= 20:
+            ret_phrase = "buenas noches"
+            if with_adjective:
+                ret_phrase = "%s %s" % ("esta", ret_phrase)
+
+        return ret_phrase
+
 
     def generate(self, utter_type, keywords, tense=None):
         """
