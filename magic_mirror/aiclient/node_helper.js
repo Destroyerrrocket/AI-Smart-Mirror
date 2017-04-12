@@ -46,6 +46,10 @@ module.exports = NodeHelper.create({
 	        self.sendSocketNotification("FACE", {})
 	        res.sendStatus(200);
 	    });
+	    this.expressApp.get('/creator', function (req, res) {
+	        self.sendSocketNotification("CREATOR", {})
+	        res.sendStatus(200);
+	    });
 
 	    this.expressApp.post('/holidays', function (req, res) {
 	        var data = "";
