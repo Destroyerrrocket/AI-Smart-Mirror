@@ -63,7 +63,7 @@ Module.register("aiclient",{
 				small.appendChild(windIcon);
 
 				var windSpeed = document.createElement("span");
-				windSpeed.innerHTML = " " + this.weather.windSpeed + " mph" //this.windSpeed
+				windSpeed.innerHTML = " " + this.weather.windSpeed + " Km/h" //this.windSpeed
 				small.appendChild(windSpeed);
 
 				var spacer = document.createElement("span");
@@ -83,7 +83,7 @@ Module.register("aiclient",{
 				small.appendChild(sunriseSunsetIcon);
 
 				var sunriseSunsetTime = document.createElement("span");
-				sunriseSunsetTime.innerHTML = " " +  "Now" //this.sunriseSunsetTime;
+				sunriseSunsetTime.innerHTML = " " +  "Ahora" //this.sunriseSunsetTime;
 				small.appendChild(sunriseSunsetTime);
 
 				var large = document.createElement("div");
@@ -106,16 +106,19 @@ Module.register("aiclient",{
 			case "FACE":
 				wrapper.innerHTML = "<img src=\"" + this.file("face.gif") + "\" style=\"border:1px solid black;max-width:100%;\">"
 				break
+			case "CREATOR":
+				wrapper.innerHTML = "<img src=\"" + this.file("matrix.gif") + "\" style=\"border:1px solid black;\">"
+				break
 			case "HOLIDAYS":
 				var title = document.createElement('div')
 				title.innerHTML = this.holiday.localName
 				title.className = "large bright";
 				title.style.margin = "10px"
 
-				var date = new Date(this.holiday.date.year, this.holiday.date.month - 1, this.holiday.date.month)
+				var date = ( this.holiday.date.day + "/" + this.holiday.date.month + "/" + this.holiday.date.year)
 
 				var subtitle = document.createElement('div')
-				subtitle.innerHTML = date.toDateString()
+				subtitle.innerHTML = date //.toDateString()
 				subtitle.className = "medium bright";
 				subtitle.style.margin = "10px" 
 
@@ -124,7 +127,7 @@ Module.register("aiclient",{
 				break
 			case "NEWS":
 				var title = document.createElement('div')
-				title.innerHTML = "News"
+				title.innerHTML = "Notícias"
 				title.className = "medium bright";
 				title.style.margin = "20px"
 
@@ -184,6 +187,9 @@ Module.register("aiclient",{
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "FACE") {
 			this.current_selection = "FACE"
+			this.updateDom(this.config.animationSpeed);
+		} else if (notification == "CREATOR") {
+			this.current_selection = "CREATOR"
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "NEWS") {
 			this.current_selection = "NEWS"
