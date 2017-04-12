@@ -1,8 +1,8 @@
 # bot.py
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 # speechrecognition, pyaudio, brew install portaudio
 import sys
-reload(sys)  
+reload(sys)
 sys.setdefaultencoding('utf8')
 sys.path.append("./")
 
@@ -97,6 +97,18 @@ class Bot(object):
                 elif intent == 'insult':
                     self.__insult_action()
                     return
+                elif intent == 'Dirt':
+                    self.__Dirt_action()
+                    return
+                elif intent == 'Hi':
+                    self.__Hi_action()
+                    return
+                elif intent == 'years':
+                    self.__years_action()
+                    return
+                elif intent == 'livelocation':
+                    self.__livelocation_action()
+                    return
                 elif intent == 'appreciation':
                     self.__appreciation_action()
                     return
@@ -106,7 +118,7 @@ class Bot(object):
                 elif intent == 'meaning of life':
                     self.__meaning_action()
                     return
-                else: 
+                else:
                     self.__text_action("Lo siento, aún no sé de este tema.")
                     return
 
@@ -143,7 +155,7 @@ class Bot(object):
 
     def __appearance_action(self):
         requests.get("http://localhost:8080/face")
-
+        self.speech.synthesize_text(self.nlg.appearance())
     def __appreciation_action(self):
         self.__text_action(self.nlg.appreciation())
 
@@ -151,7 +163,7 @@ class Bot(object):
     	requests.get("http://localhost:8080/creator")
     	self.speech.synthesize_text(self.nlg.creator())
 
-        
+
 
     def __acknowledge_action(self):
         self.__text_action(self.nlg.acknowledge())
@@ -161,6 +173,18 @@ class Bot(object):
 
     def __insult_action(self):
         self.__text_action(self.nlg.insult())
+
+    def __Dirt_action(self):
+        self.__text_action(self.nlg.Dirt())
+
+    def __Hi_action(self):
+        self.__text_action(self.nlg.Hi())
+
+    def __years_action(self):
+        self.__text_action(self.nlg.years())
+
+    def __livelocation_action(self):
+        self.__text_action(self.nlg.livelocation())
 
     def __personal_status_action(self):
         self.__text_action(self.nlg.personal_status())

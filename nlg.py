@@ -1,5 +1,5 @@
 # nlg.py
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 import random
 import datetime
 from py4j_server import launch_py4j_server
@@ -217,11 +217,57 @@ class NLG(object):
 
     def insult(self):
         insultanswer = [
-            "That's not very nice. Talk to me again when you have fixed your attitude",
-            "Artificial intelligence is no match for natural stupidity."
+            "Quien lo dice lo és.",
+            "Esta inteligencia artificial no está programada para responder ante la estupidez natural."
         ]
 
         return random.choice(insultanswer)
+
+    def Dirt(self):
+        DirtAnswer = [
+            "sé que lo sabes. Pero soy una máquina.",
+            "eres consciente de que le hablas a una máquina?"
+        ]
+
+        return random.choice(DirtAnswer)
+
+    def Hi(self):
+        HiAnswer = [
+            "Hola y %s." % self.time_of_day_hi(date),
+            "Hola"
+        ]
+
+        return random.choice(HiAnswer)
+
+    def appearance(self):
+        appearanceAnswer = [
+            "Soy una onda de energía",
+            "Estoy por encima de un cuerpo físico"
+        ]
+
+        return random.choice(appearanceAnswer)
+
+    def years(self):
+        YearsAnswer = [
+            "aproximadamente 2 semanas",
+            "15 días y 8 horas",
+            "dos millones de ciclos de reloj",
+            "En la tierra, 2 semanas"
+        ]
+
+        return random.choice(YearsAnswer)
+
+    def livelocation(self):
+         livelocationAnswer = [
+            "Estoy en otro plano de existencia",
+            "A tu alrededor",
+            "Por todas partes",
+            "En la nube",
+            "Hasta donde abarca el horizonte",
+            "Fuera de la realidad física"
+        ]
+
+        return random.choice(livelocationAnswer)
 
     def greet(self):
         """
