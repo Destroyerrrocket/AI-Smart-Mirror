@@ -100,6 +100,12 @@ class Bot(object):
                 elif intent == 'appreciation':
                     self.__appreciation_action()
                     return
+                elif intent == 'creator':
+                    self.__creator_action()
+                    return
+                elif intent == 'meaning of life':
+                    self.__meaning_action()
+                    return
                 else: 
                     self.__text_action("Lo siento, aún no sé de este tema.")
                     return
@@ -141,8 +147,17 @@ class Bot(object):
     def __appreciation_action(self):
         self.__text_action(self.nlg.appreciation())
 
+    def __creator_action(self):
+    	requests.get("http://localhost:8080/creator")
+    	self.speech.synthesize_text(self.nlg.creator())
+
+        
+
     def __acknowledge_action(self):
         self.__text_action(self.nlg.acknowledge())
+
+    def __meaning_action(self):
+        self.__text_action(self.nlg.meaning_of_life())
 
     def __insult_action(self):
         self.__text_action(self.nlg.insult())
