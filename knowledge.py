@@ -23,7 +23,7 @@ class Knowledge(object):
         temperature = int(weather_json['currently']['temperature'])
 	#temperature = (temperatureF - 32) * 5.0/9.0
         current_forecast = weather_json['currently']['summary']
-        hourly_forecast = weather_json['minutely']['summary']
+        hourly_forecast = weather_json['currently']['summary']
         daily_forecast = weather_json['hourly']['summary']
         weekly_forecast = weather_json['daily']['summary']
         icon = weather_json['currently']['icon']
@@ -50,13 +50,13 @@ class Knowledge(object):
 
     def get_map_url(self, location, map_type=None):
         if map_type == "satellite":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=satellite&format=png" % location
+            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&scale=false&size=1200x600&maptype=satellite&format=png" % location
         elif map_type == "terrain":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=terrain&format=png" % location
+            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&scale=false&size=1200x600&maptype=terrain&format=png" % location
         elif map_type == "hybrid":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=hybrid&format=png" % location
+            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&scale=false&size=1200x600&maptype=hybrid&format=png" % location
         else:
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=roadmap&format=png" % location
+            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&scale=false&size=1200x600&maptype=roadmap&format=png" % location
 
     def get_news(self):
         ret_headlines = []
