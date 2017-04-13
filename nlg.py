@@ -156,14 +156,14 @@ class NLG(object):
             "La enfermera le dice al médico: Hay un hombre invisible en la sala de espera. Y el doctor responde: Dígale que en este momento no puedo verlo.",
             "¿Cómo se dice autobús en alemán? Suban-estrujen-bajen.",
             "Oiga como es que usted no habla nunca? Es que soy mudo.",
-            "What's an onomatopoeia? Just what it sounds like!",
+            #"What's an onomatopoeia? Just what it sounds like!",
             "Tú sabes cómo se llaman todos los habitantes de San Juan? todos no.",
 	    "Un hombre va a visitar a un adivino y llama a la puerta. quién es? pues vaya vino.",
             "Hoy nombre ha llamado a mi puerta y ha pedido una donación para la piscina local. le he dado un vaso de agua.",
             "Un estudio reciente demuestra que las mujeres que tienen un poco de sobrepeso viven más que los hombres que lo mencionan.",
             "Cómo se llama esa montaña?. Cual?. Y la otra?.",
             "A mi hijo le hemos puesto gafas. Qué nombre más feo.",
-            "llama y dice: oiga esto es la embajada de Laos?. Sí. Pues tráeme uno de vainilla.",
+            "llama y dice: oiga esto es la embajada de Laos?. Sí. Pues tráeme uno de vainilla."
             #"I started out with nothing, and I still have most of it.",
             #"I used to think I was indecisive, but now I'm not too sure.",
             #"I named my hard drive dat ass so once a month my computer asks if I want to 'back dat ass up'.",
@@ -258,7 +258,7 @@ class NLG(object):
         return random.choice(YearsAnswer)
 
     def livelocation(self):
-         livelocationAnswer = [
+        liveAnswer = [
             "Estoy en otro plano de existencia",
             "A tu alrededor",
             "Por todas partes",
@@ -267,7 +267,9 @@ class NLG(object):
             "Fuera de la realidad física"
         ]
 
-        return random.choice(livelocationAnswer)
+        return random.choice(liveAnswer)
+
+    
 
     def greet(self):
         """
@@ -388,7 +390,7 @@ class NLG(object):
             "42",
             "El significado de la vida, del universo y del todo es 42",
             #"Por favor lea el manual del autoestopista galáctico",
-            "42, según mi manual"
+            "42, según el manual del autoestopista galáctico"
         ]
 
         return random.choice(phrases)
