@@ -284,7 +284,7 @@ class NLG(object):
             "tres",
             "quatro",
             "cinco",
-            "23",
+            "23"
         ]
 
         return random.choice(RandomNumAnswer)
