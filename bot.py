@@ -109,6 +109,12 @@ class Bot(object):
                 elif intent == 'livelocation':
                     self.__livelocation_action()
                     return
+                elif intent == 'Private':
+                    self.__Private_action()
+                    return
+                elif intent == 'rantime':
+                    self.__rantime_action()
+                    return
                 elif intent == 'appreciation':
                     self.__appreciation_action()
                     return
@@ -117,6 +123,15 @@ class Bot(object):
                     return
                 elif intent == 'meaning of life':
                     self.__meaning_action()
+                    return
+                elif intent == 'Futbol':
+                    self.__meaning_action()
+                    return
+                elif intent == 'filosofy':
+                    self.__meaning_action()
+                    return
+                elif intent == 'RandomNum':
+                    self.__RandomNum_action()
                     return
                 else:
                     self.__text_action("Lo siento, aún no sé de este tema.")
@@ -167,7 +182,10 @@ class Bot(object):
 
     def __acknowledge_action(self):
         self.__text_action(self.nlg.acknowledge())
-
+    def __Private_action(self):
+        self.__text_action(self.nlg.Private())
+    def __rantime_action(self):
+        self.__text_action(self.nlg.rantime())
     def __meaning_action(self):
         self.__text_action(self.nlg.meaning_of_life())
 
@@ -179,6 +197,15 @@ class Bot(object):
 
     def __Hi_action(self):
         self.__text_action(self.nlg.Hi())
+
+    def __Futbol_action(self):
+        self.__text_action(self.nlg.Futbol())
+
+    def __RandomNum_action(self):
+        self.__text_action(self.nlg.RandomNum())
+
+    def __filosofy_action(self):
+        self.__text_action(self.nlg.filosofy())
 
     def __years_action(self):
         self.__text_action(self.nlg.years())

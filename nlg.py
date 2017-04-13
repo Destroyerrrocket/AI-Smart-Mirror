@@ -239,6 +239,16 @@ class NLG(object):
 
         return random.choice(HiAnswer)
 
+    def Private(self):
+        PrivateAnswer = [
+            "Este tema está restringido.",
+            "Lo siento %s, pero no puedo ablar de eso ahora" % user_name,
+            "Ni yo lo sé",
+            "Lo siento %s, pero no puedo dar esta información" % user_name
+        ]
+
+        return random.choice(PrivateAnswer)
+
     def appearance(self):
         appearanceAnswer = [
             "Soy una onda de energía",
@@ -247,12 +257,53 @@ class NLG(object):
 
         return random.choice(appearanceAnswer)
 
+    def Futbol(self):
+        FutbolAnswer = [
+            "Son necesarios grandes rivales para demostrar la valía",
+            "No tengo una opinión al respecto",
+            "El deporte ennoblece",
+            "Como decía Miguel Ángel: 'mens sana in corpore sano'",
+            "He oido que el Barça és muy popular"
+        ]
+
+        return random.choice(FutbolAnswer)
+
+    def RandomNum(self):
+        RandomNumAnswer = [
+            "Son necesarios grandes rivales para demostrar la valía",
+            "No tengo una opinión al respecto",
+            "El deporte ennoblece",
+            "Como decía Miguel Ángel: 'mens sana in corpore sano'",
+            "He oido que el Barça és muy popular"
+        ]
+
+        return random.choice(RandomNumAnswer)
+
+    def filosofy(self):
+        filosofyAnswer = [
+            "No he sido programada para tratar este tema",
+            "Este tema se escapa de mis conocimientos"
+        ]
+
+        return random.choice(filosofyAnswer)
+
+    def rantime(self):
+        rantimeAnswer = [
+            "Por desgracia no he tenido tiempo",
+            "Durante las dos semanas de desarrollo no he tenido tiempo",
+            "Por desgracia no he tenido tiempo. Lo siento",
+            "No he tenido tiempo.",
+        ]
+
+        return random.choice(rantimeAnswer)
+
     def years(self):
         YearsAnswer = [
-            "aproximadamente 2 semanas",
+            "Aproximadamente 2 semanas",
             "15 días y 8 horas",
-            "dos millones de ciclos de reloj",
-            "En la tierra, 2 semanas"
+            "Dos millones de ciclos de reloj",
+            "En la tierra, 2 semanas",
+            "En la tierra, 15 días y 8 horas"
         ]
 
         return random.choice(YearsAnswer)
@@ -269,7 +320,7 @@ class NLG(object):
 
         return random.choice(liveAnswer)
 
-    
+
 
     def greet(self):
         """
