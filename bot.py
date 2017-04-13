@@ -125,10 +125,10 @@ class Bot(object):
                     self.__meaning_action()
                     return
                 elif intent == 'Futbol':
-                    self.__meaning_action()
+                    self.__Futbol_action()
                     return
                 elif intent == 'filosofy':
-                    self.__meaning_action()
+                    self.__filosofy_action()
                     return
                 elif intent == 'RandomNum':
                     self.__RandomNum_action()

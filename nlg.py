@@ -270,11 +270,21 @@ class NLG(object):
 
     def RandomNum(self):
         RandomNumAnswer = [
-            "Son necesarios grandes rivales para demostrar la valía",
-            "No tengo una opinión al respecto",
-            "El deporte ennoblece",
-            "Como decía Miguel Ángel: 'mens sana in corpore sano'",
-            "He oido que el Barça és muy popular"
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+            "uno",
+            "dos",
+            "tres",
+            "quatro",
+            "cinco",
+            "23",
         ]
 
         return random.choice(RandomNumAnswer)
