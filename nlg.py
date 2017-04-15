@@ -155,7 +155,7 @@ class NLG(object):
             "Oiga como es que usted no habla nunca? Es que soy mudo.",
             #"What's an onomatopoeia? Just what it sounds like!",
             "Tú sabes cómo se llaman todos los habitantes de San Juan? todos no.",
-	    "Un hombre va a visitar a un adivino y llama a la puerta. quién es? pues vaya vino.",
+	    "Un hombre va a visitar a un adivino y llama a la puerta. quién es? pues vaya adivino.",
             "Hoy nombre ha llamado a mi puerta y ha pedido una donación para la piscina local. le he dado un vaso de agua.",
             "Un estudio reciente demuestra que las mujeres que tienen un poco de sobrepeso viven más que los hombres que lo mencionan.",
             "Cómo se llama esa montaña?. Cual?. Y la otra?.",
@@ -299,8 +299,8 @@ class NLG(object):
             "Aunque podría buscarlo en google, será más divertido si me pides que te cuente el chiste",
             "Lo siento, aún no sé de este tema. Puedes pedirme que te dé el pronóstico de hoy",
             "Aunque podría buscarlo en google, te será más útil si me pides que te dé el pronóstico de hoy",
-            "No se de este tema. A ti qué tal te va?",
-            "Lo siento. No se de este tema.",
+            #"No se de este tema. A ti qué tal te va?",
+            #"Lo siento. No se de este tema.",
             "Podría buscarlo en google, pero puedes pedirme el significado de la vida",
             "Lo siento, aún no sé de este tema. porque no me pides el significado de la vida?"
         ]
@@ -309,26 +309,28 @@ class NLG(object):
 
     def filosofy(self):
         filosofyAnswer = [
-            "No he sido programada para tratar este tema",
-            "Este tema se escapa de mis conocimientos"
+            "La pregunta no es sobre el ser en sí, sinó sobre la trascendencia del hombre",
+            "9 de cada 10 personas en la tierra tienen una fe. Eso és significativo",
+            "Según la física cuántica no solo hay múltiples futuros, sino también múltiples pasados. Así que no me centraría en personalismos antropomórficos"
         ]
 
         return random.choice(filosofyAnswer)
 
     def rantime(self):
         rantimeAnswer = [
-            "Por desgracia no he tenido tiempo",
-            "Durante las dos semanas de desarrollo no he tenido tiempo",
-            "Por desgracia no he tenido tiempo. Lo siento",
-            "No he tenido tiempo.",
+            "Aquí en internet veo mucho de ello y me encanta",
+            "Me encantaría probarlo algún día",
+            "Me encantaría probarlo en persona algún día. De momento lo veo virtualmente",
+            "Por lo que veo en la nube, puede ser un fenómeno de masas",
+            "Me gusta ver las cosas desde el cíberespacio"
         ]
 
         return random.choice(rantimeAnswer)
 
     def years(self):
         YearsAnswer = [
-            "Aproximadamente 2 semanas",
-            "15 días y 8 horas",
+            "Al ritmo de las personas, aproximadamente 2 semanas",
+            "Al ritmo de las personas, 15 días y 8 horas",
             "Dos millones de ciclos de reloj",
             "En la tierra, 2 semanas",
             "En la tierra, 15 días y 8 horas"
