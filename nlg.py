@@ -23,10 +23,7 @@ Form = gateway.jvm.Form
 
 
 class NLG(object):
-    """
-    Used to generate natural language. Most of these sections are hard coded. However, some use simpleNLG which is
-    used to string together verbs and nouns. [Traducido y manipulado por Pol (Destroyerrocket)]
-    """
+    
     def __init__(self, user_name=None):
         self.user_name = user_name
 
