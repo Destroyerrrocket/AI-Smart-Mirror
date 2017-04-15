@@ -134,7 +134,7 @@ class Bot(object):
                     self.__RandomNum_action()
                     return
                 else:
-                    self.__text_action("Lo siento, aún no sé de este tema.")
+                    self.__nonerror_action()
                     return
 
             except Exception as e:
@@ -215,6 +215,9 @@ class Bot(object):
 
     def __personal_status_action(self):
         self.__text_action(self.nlg.personal_status())
+
+    def __nonerror_action(self):
+        self.__text_action(self.nlg.nonerror())
 
     def __text_action(self, text=None):
         if text is not None:

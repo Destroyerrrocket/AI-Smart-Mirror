@@ -23,7 +23,7 @@ Form = gateway.jvm.Form
 
 
 class NLG(object):
-    
+
     def __init__(self, user_name=None):
         self.user_name = user_name
 
@@ -229,6 +229,7 @@ class NLG(object):
         return random.choice(DirtAnswer)
 
     def Hi(self):
+        date = datetime.datetime.now()
         HiAnswer = [
             "Hola y %s." % self.time_of_day_hi(date),
             "Hola"
@@ -285,6 +286,26 @@ class NLG(object):
         ]
 
         return random.choice(RandomNumAnswer)
+
+    def nonerror(self):
+        nonerrorAnswer = [
+            "Aún no sé de este tema. Pero puedes pedirme que te enseñe a un mapa de Sabadell",
+            "Podría buscarlo en google, pero será más interesante si me pides que te enseñe a un mapa de Barcelona",
+            "Lo siento, aún no sé de este tema. Si quieres puedes pedirme que te enseñe las noticias",
+            "Podría buscarlo en google, pero será más interesante si preguntas sobre las noticias",
+            "Aún no sé de este tema. Pero si quieres puedes pedirme que te enseñe las próximas fiestas",
+            "Podría buscarlo en google, pero será más interesante si me pides que te enseñe las próximas fiestas",
+            "Lo siento, aún no sé de este tema. Si quieres puedes pedirme que te cuente un chiste",
+            "Aunque podría buscarlo en google, será más divertido si me pides que te cuente el chiste",
+            "Lo siento, aún no sé de este tema. Puedes pedirme que te dé el pronóstico de hoy",
+            "Aunque podría buscarlo en google, te será más útil si me pides que te dé el pronóstico de hoy",
+            "No se de este tema. A ti qué tal te va?",
+            "Lo siento. No se de este tema.",
+            "Podría buscarlo en google, pero puedes pedirme el significado de la vida",
+            "Lo siento, aún no sé de este tema. porque no me pides el significado de la vida?"
+        ]
+
+        return random.choice(nonerrorAnswer)
 
     def filosofy(self):
         filosofyAnswer = [
