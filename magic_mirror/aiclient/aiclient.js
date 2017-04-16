@@ -109,9 +109,9 @@ Module.register("aiclient",{
 			case "CREATOR":
 				wrapper.innerHTML = "<img src=\"" + this.file("matrix.gif") + "\" style=\"border:1px solid black;\">"
 				break
-				case "KLAATU":
-					wrapper.innerHTML = "<img src=\"" + this.file("Klaatu.gif") + "\" style=\"border:1px solid black;max-width:100%;\">"
-					break
+			case "KLAATU":
+				wrapper.innerHTML = "<img src=\"" + this.file("Klaatu.gif") + "\" style=\"border:1px solid black;\">"
+				break
 			case "HOLIDAYS":
 				var title = document.createElement('div')
 				title.innerHTML = this.holiday.localName
@@ -193,6 +193,9 @@ Module.register("aiclient",{
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "CREATOR") {
 			this.current_selection = "CREATOR"
+			this.updateDom(this.config.animationSpeed);
+		} else if (notification == "KLAATU") {
+			this.current_selection = "KLAATU"
 			this.updateDom(this.config.animationSpeed);
 		} else if (notification == "NEWS") {
 			this.current_selection = "NEWS"

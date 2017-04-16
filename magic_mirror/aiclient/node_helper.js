@@ -50,7 +50,7 @@ module.exports = NodeHelper.create({
 	        self.sendSocketNotification("CREATOR", {})
 	        res.sendStatus(200);
 	    });
-			this.expressApp.get('/Klaatu', function (req, res) {
+	    this.expressApp.get('/Klaatu', function (req, res) {
 	        self.sendSocketNotification("KLAATU", {})
 	        res.sendStatus(200);
 	    });
