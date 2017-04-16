@@ -289,6 +289,14 @@ class NLG(object):
 
         return random.choice(RandomNumAnswer)
 
+    def Klaatu(self):
+        KlaatuAnswer = [
+            "La expresión Klaatu barada nikto proviene de la película The Day the Earth Stood Still, de 1951. Klaatu es el nombre del extraterrestre humanoide protagonista del filme. Klaatu encargó a Helen Benson pronunciar la frase ante el robot Gort. Como respuesta, Gort desistiría de destruir la Tierra y resucitaría a Klaatu de la muerte.",
+            "Klaatu barada nikto proviene de la película The Day the Earth Stood Still. Helen Benson pronuncia la frase ante el robot Gort. Como respuesta, Gort desiste de destruir la Tierra y resucita a Klaatu de la muerte."
+        ]
+
+        return random.choice(KlaatuAnswer)
+
     def nonerror(self):
         nonerrorAnswer = [
             "Aún no sé de este tema. Pero puedes pedirme que te enseñe a un mapa de Sabadell",
@@ -317,24 +325,24 @@ class NLG(object):
         ]
 
         return random.choice(filosofyAnswer)
-    
+
 
 
     def musicSTART(self):
         Answer = [
             "Marchando"
         ]
-	
-	
+
+
         return random.choice(Answer)
     def musicOFF(self):
         Answer = [
             "Marchando"
         ]
-	
-	
+
+
         return random.choice(Answer)
-    
+
     def rantime(self):
         rantimeAnswer = [
             "Aquí en internet veo mucho de ello y me encanta",
@@ -616,4 +624,3 @@ class NLG(object):
         realiser = Realiser()
         output = realiser.realiseDocument(utterance).strip()
         return output
-

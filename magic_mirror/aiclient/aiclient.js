@@ -39,7 +39,7 @@ Module.register("aiclient",{
 		Log.log("Starting module: " + this.name);
 
 		this.sendSocketNotification("INITIALIZE", {})
-		
+
 	},
 
 	// Override dom generator.
@@ -70,7 +70,7 @@ Module.register("aiclient",{
 				spacer.innerHTML = "&nbsp;";
 				small.appendChild(spacer);
 
-				var sunriseSunsetIcon = document.createElement("span"); 
+				var sunriseSunsetIcon = document.createElement("span");
 				if (this.weather.hour >= 4 && this.weather.hour < 10) {
 					sunriseSunsetIcon.className = "wi dimmed " + "wi-sunrise"; //this.sunriseSunsetIcon
 				} else if (this.weather.hour >=10 && this.weather.hour < 18) {
@@ -109,6 +109,9 @@ Module.register("aiclient",{
 			case "CREATOR":
 				wrapper.innerHTML = "<img src=\"" + this.file("matrix.gif") + "\" style=\"border:1px solid black;\">"
 				break
+				case "KLAATU":
+					wrapper.innerHTML = "<img src=\"" + this.file("Klaatu.gif") + "\" style=\"border:1px solid black;max-width:100%;\">"
+					break
 			case "HOLIDAYS":
 				var title = document.createElement('div')
 				title.innerHTML = this.holiday.localName
@@ -120,7 +123,7 @@ Module.register("aiclient",{
 				var subtitle = document.createElement('div')
 				subtitle.innerHTML = date //.toDateString()
 				subtitle.className = "medium bright";
-				subtitle.style.margin = "10px" 
+				subtitle.style.margin = "10px"
 
 				wrapper.appendChild(title)
 				wrapper.appendChild(subtitle)

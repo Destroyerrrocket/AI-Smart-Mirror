@@ -1,7 +1,7 @@
 import subprocess
 class VLC(object):
-   def play(self, stop=1, movie=""):  
+   def play(self, stop=1, movie=""):
       if stop == 1:
-        subprocess.Popen(["cvlc", movie, '--play-and-exit', '--fullscreen', '--stop-time','3600'], shell=False)
-      else: 
+        subprocess.Popen(["cvlc", movie, '--play-and-exit', '--fullscreen', '--stop-time','300'], shell=False)
+      else:
         print "shhh"

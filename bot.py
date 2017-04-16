@@ -69,7 +69,7 @@ class Bot(object):
 
         # received audio data, now we'll recognize it using Google Speech Recognition
         speech = self.speech.google_speech_recognition(recognizer, audio)
-	
+
         if speech is not None:
             try:
                 SPEECHVAR = speech
@@ -110,46 +110,48 @@ class Bot(object):
                     self.__insult_action()
                 elif intent == 'Dirt':
                     self.__Dirt_action()
-                    
+
                 elif intent == 'Hi':
                     self.__Hi_action()
-                    
+
                 elif intent == 'years':
                     self.__years_action()
-                    
+
                 elif intent == 'livelocation':
                     self.__livelocation_action()
-                    
+
                 elif intent == 'Private':
                     self.__Private_action()
-                    
+
                 elif intent == 'rantime':
                     self.__rantime_action()
-                    
+
                 elif intent == 'appreciation':
                     self.__appreciation_action()
-                    
+
                 elif intent == 'creator':
                     self.__creator_action()
-                    
+
                 elif intent == 'meaning of life':
                     self.__meaning_action()
-                    
+
                 elif intent == 'Futbol':
                     self.__Futbol_action()
-                    
+
                 elif intent == 'filosofy':
                     self.__filosofy_action()
-                    
+
                 elif intent == 'RandomNum':
                     self.__RandomNum_action()
                 elif intent == 'MusicOn':
                     self.__MusicOn_action(speech)
                 elif intent == 'MusicOff':
                     self.__MusicOff_action()
+                elif intent == 'Klaatu':
+                    self.__Klaatu_action()
                 else:
                     self.__nonerror_action()
-                    
+
 
             except Exception as e:
                 print "wit ha fallado, Pol, QUÉ HACES?!"
@@ -188,6 +190,10 @@ class Bot(object):
     def __appreciation_action(self):
         self.__text_action(self.nlg.appreciation())
 
+    def __Klaatu_action(self):
+        requests.get("http://localhost:8080/Klaatu")
+    	self.speech.synthesize_text(self.nlg.Klaatu())
+
     def __creator_action(self):
     	requests.get("http://localhost:8080/creator")
     	self.speech.synthesize_text(self.nlg.creator())
@@ -223,7 +229,7 @@ class Bot(object):
 
     def __years_action(self):
         self.__text_action(self.nlg.years())
-    
+
     def __MusicOff_action(self):
         self.__text_action(self.nlg.musicOFF())
         p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
@@ -233,7 +239,7 @@ class Bot(object):
                pid = int(line.split(None, 1)[0])
                os.kill(pid, signal.SIGKILL)
 
-    
+
     def __MusicOn_action(self, SPEECHVAR):
         count = 0
         movie = "https://www.youtube.com/watch?v=sxOx0IPdVBM"
@@ -333,12 +339,12 @@ class Bot(object):
             self.speech.synthesize_text(forecast_speech)
 
     def play(self, stop=1, movie=""):
-      
-      
+
+
       if stop == 1:
         instance = vlc.Instance()
         subprocess.call(["vlc", movie, '--play-and-exit', '--fullscreen', '--stop-time','3600'], shell=False)
-      else: 
+      else:
         print "shhh"
 
     def __maps_action(self, nlu_entities=None):
@@ -379,4 +385,3 @@ class Bot(object):
 if __name__ == "__main__":
     bot = Bot()
     bot.start()
-
