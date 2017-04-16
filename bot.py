@@ -5,13 +5,23 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 sys.path.append("./")
-
+import subprocess
+from subprocess import Popen, PIPE
+import signal
 import requests
 import datetime
 import dateutil.parser
 import json
 import traceback
+import urllib
+import urllib2
+import vlc
+import os
+from bs4 import BeautifulSoup
+import bs4
+import re
 from nlg import NLG
+from useless import VLC
 from speech import Speech
 from knowledge import Knowledge
 from vision import Vision
@@ -23,10 +33,11 @@ weather_api_token = "86ac0cf3006b2a3c9ac8234270d81c05"
 wit_ai_token = "Bearer OAEDKP5G7KCTUSJ5IXAHT5N4EHV7OVFH"
 debugger_enabled = True
 camera = 0
-
+SPEECHVAR = ""
 
 class Bot(object):
     def __init__(self):
+        self.useless = VLC()
         self.nlg = NLG(user_name=my_name)
         self.speech = Speech(launch_phrase=launch_phrase, debugger_enabled=debugger_enabled)
         self.knowledge = Knowledge(weather_api_token)
@@ -40,7 +51,7 @@ class Bot(object):
         while True:
             requests.get("http://localhost:8080/clear")
             if self.vision.recognize_face():
-                print "Found face"
+                #print "Found face"
                 if use_launch_phrase:
                     recognizer, audio = self.speech.listen_for_audio()
                     if self.speech.is_call_to_action(recognizer, audio):
@@ -58,9 +69,10 @@ class Bot(object):
 
         # received audio data, now we'll recognize it using Google Speech Recognition
         speech = self.speech.google_speech_recognition(recognizer, audio)
-
+	
         if speech is not None:
             try:
+                SPEECHVAR = speech
                 r = requests.get('https://api.wit.ai/message?v=20160918&q=%s' % speech,
                                  headers={"Authorization": wit_ai_token})
                 print r.text
@@ -96,46 +108,48 @@ class Bot(object):
                     self.__joke_action()
                 elif intent == 'insult':
                     self.__insult_action()
-                    return
                 elif intent == 'Dirt':
                     self.__Dirt_action()
-                    return
+                    
                 elif intent == 'Hi':
                     self.__Hi_action()
-                    return
+                    
                 elif intent == 'years':
                     self.__years_action()
-                    return
+                    
                 elif intent == 'livelocation':
                     self.__livelocation_action()
-                    return
+                    
                 elif intent == 'Private':
                     self.__Private_action()
-                    return
+                    
                 elif intent == 'rantime':
                     self.__rantime_action()
-                    return
+                    
                 elif intent == 'appreciation':
                     self.__appreciation_action()
-                    return
+                    
                 elif intent == 'creator':
                     self.__creator_action()
-                    return
+                    
                 elif intent == 'meaning of life':
                     self.__meaning_action()
-                    return
+                    
                 elif intent == 'Futbol':
                     self.__Futbol_action()
-                    return
+                    
                 elif intent == 'filosofy':
                     self.__filosofy_action()
-                    return
+                    
                 elif intent == 'RandomNum':
                     self.__RandomNum_action()
-                    return
+                elif intent == 'MusicOn':
+                    self.__MusicOn_action(speech)
+                elif intent == 'MusicOff':
+                    self.__MusicOff_action()
                 else:
                     self.__nonerror_action()
-                    return
+                    
 
             except Exception as e:
                 print "wit ha fallado, Pol, QUÉ HACES?!"
@@ -209,6 +223,39 @@ class Bot(object):
 
     def __years_action(self):
         self.__text_action(self.nlg.years())
+    
+    def __MusicOff_action(self):
+        self.__text_action(self.nlg.musicOFF())
+        p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
+        out, err = p.communicate()
+        for line in out.splitlines():
+            if 'vlc' in line:
+               pid = int(line.split(None, 1)[0])
+               os.kill(pid, signal.SIGKILL)
+
+    
+    def __MusicOn_action(self, SPEECHVAR):
+        count = 0
+        movie = "https://www.youtube.com/watch?v=sxOx0IPdVBM"
+        self.__text_action(self.nlg.musicSTART())
+        arg = SPEECHVAR
+	print SPEECHVAR
+        arg = arg.replace("reproduce ", "")
+	print arg
+        searchTerm = arg
+        text = requests.get("https://www.youtube.com/results?search_query="+searchTerm).text
+        soup = bs4.BeautifulSoup(text, "html.parser")
+        div = [ d for d in soup.find_all("div") if d.has_attr("class") and "yt-lockup-dismissable" in d["class"] ]
+        for d in div:
+            if count == 0:
+                img0 = d.find_all("img")[0]
+                a0 = d.find_all("a")[0]
+                imgL = img0["src"] if not img0.has_attr("data-thumb") else img0["data-thumb"]
+                a0 = [ x for x in d.find_all("a") if x.has_attr("title") ][0]
+                print( (imgL, "http://www.youtube.com" +a0["href"], a0["title"]) )
+                movie = "http://www.youtube.com" +a0["href"]
+                count = 1
+        self.useless.play(1, movie)
 
     def __livelocation_action(self):
         self.__text_action(self.nlg.livelocation())
@@ -285,6 +332,15 @@ class Bot(object):
         if forecast_speech is not None:
             self.speech.synthesize_text(forecast_speech)
 
+    def play(self, stop=1, movie=""):
+      
+      
+      if stop == 1:
+        instance = vlc.Instance()
+        subprocess.call(["vlc", movie, '--play-and-exit', '--fullscreen', '--stop-time','3600'], shell=False)
+      else: 
+        print "shhh"
+
     def __maps_action(self, nlu_entities=None):
 
         location = None
@@ -323,3 +379,4 @@ class Bot(object):
 if __name__ == "__main__":
     bot = Bot()
     bot.start()
+

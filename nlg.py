@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import random
 import datetime
+import subprocess
 from py4j_server import launch_py4j_server
 from py4j.java_gateway import java_import
 
@@ -222,8 +223,9 @@ class NLG(object):
 
     def Dirt(self):
         DirtAnswer = [
-            "sé que lo sabes. Pero soy una máquina.",
-            "eres consciente de que le hablas a una máquina?"
+            "Sé que lo sabes. Pero soy una máquina.",
+            "Eres consciente de que le hablas a una máquina?",
+            "Esta conversación no és apropiada. Para ti."
         ]
 
         return random.choice(DirtAnswer)
@@ -315,7 +317,24 @@ class NLG(object):
         ]
 
         return random.choice(filosofyAnswer)
+    
 
+
+    def musicSTART(self):
+        Answer = [
+            "Marchando"
+        ]
+	
+	
+        return random.choice(Answer)
+    def musicOFF(self):
+        Answer = [
+            "Marchando"
+        ]
+	
+	
+        return random.choice(Answer)
+    
     def rantime(self):
         rantimeAnswer = [
             "Aquí en internet veo mucho de ello y me encanta",
@@ -597,3 +616,4 @@ class NLG(object):
         realiser = Realiser()
         output = realiser.realiseDocument(utterance).strip()
         return output
+
