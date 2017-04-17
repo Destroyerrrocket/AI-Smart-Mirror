@@ -152,6 +152,8 @@ class Bot(object):
                     self.__Klaatu_action()
                 elif intent == 'Hour':
                     self.__Hour_action()
+                elif intent == 'Season':
+                    self.__Season_action()
                 else:
                     self.__nonerror_action()
 

@@ -514,7 +514,7 @@ class NLG(object):
 
         return random.choice(phrases)
     def get_season():
-    month = month = strftime('%B')
+    month = strftime('%B')
     seasons = {
     'otoño': ['September', 'October', 'November', 'December', 'January'],
     'la primavera': ['January', 'February', 'March', 'April'],
