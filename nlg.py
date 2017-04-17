@@ -508,23 +508,23 @@ class NLG(object):
         return self.user_name
     def season(self):
         phrases = [
-            "Estamos en %s" % get_season(),
-            "La estación en la que estamos és %s" % get_season()
+            "Estamos en %s" % self.get_season(),
+            "La estación en la que estamos és %s" % self.get_season()
         ]
 
         return random.choice(phrases)
-    def get_season():
-    month = strftime('%B')
-    seasons = {
-    'otoño': ['September', 'October', 'November', 'December', 'January'],
-    'la primavera': ['January', 'February', 'March', 'April'],
-    'el verano': ['May', 'June', 'July']
-    }
+    def get_season(self):
+        month = strftime('%B')
+        seasons = {
+           'otoño': ['September', 'October', 'November', 'December', 'January'],
+           'la primavera': ['January', 'February', 'March', 'April'],
+           'el verano': ['May', 'June', 'July']
+        }
 
-    for season in seasons:
-        if month in seasons[season]:
-            return season
-    return 'Invalid input month'
+        for season in seasons:
+            if month in seasons[season]:
+               return season
+        return 'Invalid input month'
     def time_of_day(self, date, with_adjective=False):
         ret_phrase = ""
         if date.hour < 12:
