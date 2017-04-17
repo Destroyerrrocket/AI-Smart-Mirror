@@ -226,7 +226,8 @@ class NLG(object):
         DirtAnswer = [
             "Sé que lo sabes. Pero soy una máquina.",
             "Eres consciente de que le hablas a una máquina?",
-            "Esta conversación no és apropiada. Para ti."
+            "Esta conversación no és apropiada. Para ti.",
+            "esta conversación está siendo transcrita"
         ]
 
         return random.choice(DirtAnswer)
