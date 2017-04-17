@@ -3,6 +3,7 @@
 import random
 import datetime
 import subprocess
+from time import strftime
 from py4j_server import launch_py4j_server
 from py4j.java_gateway import java_import
 
@@ -505,7 +506,25 @@ class NLG(object):
 
     def name(self):
         return self.user_name
+    def season(self):
+        phrases = [
+            "Estamos en %s" % get_season(),
+            "La estación en la que estamos és"
+        ]
 
+        return random.choice(phrases)
+    def get_season():
+    month = month = strftime('%B')
+    seasons = {
+    'otoño': ['September', 'October', 'November', 'December', 'January'],
+    'la primavera': ['January', 'February', 'March', 'April'],
+    'el verano': ['May', 'June', 'July']
+    }
+
+    for season in seasons:
+        if month in seasons[season]:
+            return season
+    return 'Invalid input month'
     def time_of_day(self, date, with_adjective=False):
         ret_phrase = ""
         if date.hour < 12:

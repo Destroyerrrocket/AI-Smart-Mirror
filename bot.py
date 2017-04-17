@@ -20,6 +20,7 @@ import os
 from bs4 import BeautifulSoup
 import bs4
 import re
+from time import gmtime, strftime
 from nlg import NLG
 from useless import VLC
 from speech import Speech
@@ -149,6 +150,8 @@ class Bot(object):
                     self.__MusicOff_action()
                 elif intent == 'Klaatu':
                     self.__Klaatu_action()
+                elif intent == 'Hour':
+                    self.__Hour_action()
                 else:
                     self.__nonerror_action()
 
@@ -220,6 +223,13 @@ class Bot(object):
 
     def __Futbol_action(self):
         self.__text_action(self.nlg.Futbol())
+
+    def __Hour_action(self):
+        Time = strftime("%d/%m/%Y %H:%M:%S", gmtime())
+        self.__text_action(Time)
+
+    def __Season_action(self):
+        self.__text_action(self.nlg.season())
 
     def __RandomNum_action(self):
         self.__text_action(self.nlg.RandomNum())
