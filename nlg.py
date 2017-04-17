@@ -509,7 +509,7 @@ class NLG(object):
     def season(self):
         phrases = [
             "Estamos en %s" % get_season(),
-            "La estación en la que estamos és"
+            "La estación en la que estamos és %s" % get_season()
         ]
 
         return random.choice(phrases)
