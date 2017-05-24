@@ -30,7 +30,7 @@ from vision import Vision
 my_name = "Pol"
 launch_phrase = "ok elena"
 use_launch_phrase = True
-weather_api_token = "86ac0cf3006b2a3c9ac8234270d81c05"
+weather_api_token = "[el token de la teva API de Darksky]"
 wit_ai_token = "Bearer OAEDKP5G7KCTUSJ5IXAHT5N4EHV7OVFH"
 debugger_enabled = True
 camera = 0
